@@ -6,27 +6,27 @@
     app:startDestination="@id/nav_home">
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.lifeapp.fragments.HomePage"
+        android:name="com.example.lifeapp.fragments.HomePageFragment"
         android:label="HOME"
         tools:layout="@layout/fragment_home_page" />
     <fragment
         android:id="@+id/nav_stories"
-        android:name="com.example.lifeapp.fragments.StoriesPage"
+        android:name="com.example.lifeapp.fragments.StoriesPageFragment"
         android:label="STORIES"
         tools:layout="@layout/fragment_stories_page" />
     <fragment
         android:id="@+id/nav_form"
-        android:name="com.example.lifeapp.fragments.CreateFormPage"
+        android:name="com.example.lifeapp.fragments.CreateFormPageFragment"
         android:label="FORM"
         tools:layout="@layout/fragment_create_form_page" />
     <fragment
         android:id="@+id/nav_weather"
-        android:name="com.example.lifeapp.fragments.WeatherPage"
+        android:name="com.example.lifeapp.fragments.WeatherPageFragment"
         android:label="WEATHER"
         tools:layout="@layout/fragment_weather_page" />
     <fragment
         android:id="@+id/nav_account"
-        android:name="com.example.lifeapp.fragments.AccountPage"
+        android:name="com.example.lifeapp.fragments.AccountPageFragment"
         android:label="MY ACCOUNT"
         tools:layout="@layout/fragment_account_page" />
 </navigation>
