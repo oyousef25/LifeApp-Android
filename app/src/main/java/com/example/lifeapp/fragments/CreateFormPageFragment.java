@@ -15,11 +15,10 @@ import com.example.lifeapp.R;
  * @version 1.0
  * @date March 19th 2021
  *
- * StoriesPage fragment:
- * This fragment will hold all different stories that have been created by the user. The user will have the ability
- * to update, create and delete a story.
+ * CreateFormPage fragment:
+ * This fragment will hold the create and update story form
  */
-public class StoriesPage extends Fragment {
+public class CreateFormPageFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +29,7 @@ public class StoriesPage extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public StoriesPage() {
+    public CreateFormPageFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +39,11 @@ public class StoriesPage extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment StoriesPage.
+     * @return A new instance of fragment CreateFormPage.
      */
     // TODO: Rename and change types and number of parameters
-    public static StoriesPage newInstance(String param1, String param2) {
-        StoriesPage fragment = new StoriesPage();
+    public static CreateFormPageFragment newInstance(String param1, String param2) {
+        CreateFormPageFragment fragment = new CreateFormPageFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,6 +64,6 @@ public class StoriesPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stories_page, container, false);
+        return inflater.inflate(R.layout.fragment_create_form_page, container, false);
     }
 }

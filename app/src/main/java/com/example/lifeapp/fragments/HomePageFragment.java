@@ -3,12 +3,14 @@ package com.example.lifeapp.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lifeapp.R;
+import com.example.lifeapp.adapters.CustomViewpager2Adapter;
 
 /**
  * @author Omar Yousef
@@ -20,18 +22,18 @@ import com.example.lifeapp.R;
  * a ViewPager2
  * a RecyclerView(Exercises, recipes, and locations)
  */
-public class HomePage extends Fragment {
+public class HomePageFragment extends Fragment {
+    //Creating a viewpager2 variable to connect with our XML file viewpager
+    ViewPager2 homePager;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private Integer mParam1;
 
-    public HomePage() {
+    public HomePageFragment() {
         // Required empty public constructor
     }
 
@@ -40,15 +42,13 @@ public class HomePage extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment HomePage.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomePage newInstance(String param1, String param2) {
-        HomePage fragment = new HomePage();
+    public static HomePageFragment newInstance(Integer param1) {
+        HomePageFragment fragment = new HomePageFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, param1);
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,8 +57,7 @@ public class HomePage extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = getArguments().getInt(ARG_PARAM1);
         }
     }
 
@@ -66,6 +65,34 @@ public class HomePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_home_page, container, false);
+
+        //Populating the viewpager
+        homePager = view.findViewById(R.id.homeViewpager);
+        //Setting our adapter
+        homePager.setAdapter(new CustomViewpager2Adapter(getActivity()));
+
+        //setting the viewpager's animations
+
+        return view;
     }
+
+
+    /**
+     * @author Omar Yousef
+     * @version 1.0
+     * @date March 20th 2021
+     *
+     * ZoomOutPage transformer created by android:
+     * It's a zoom out animation class helps us with adding animations to our viewpager2
+     */
+
+    /**
+     * @author Omar Yousef
+     * @version 1.0
+     * @date March 20th 2021
+     *
+     * DepthPageTransformer transformer created by android:
+     * It's a Depth Page Transformer animation class helps us with adding animations to our viewpager2
+     */
 }
