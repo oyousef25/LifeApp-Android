@@ -4,40 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
     android:paddingTop="10dp"
-    android:paddingBottom="50dp"
-    app:cardCornerRadius="10dp"
+    android:paddingBottom="10dp"
+    app:cardCornerRadius="5dp"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/cityName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
+            android:paddingLeft="10dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="@dimen/recycler_text"
-            android:textStyle="bold" />
+            android:textSize="@dimen/activity_vertical_margin"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tempTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tempTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:paddingTop="20dp"
+            android:paddingRight="10dp"
             android:paddingBottom="20dp"
             android:text="TextView"
             android:textAlignment="textEnd"
-            android:textSize="@dimen/recycler_text" />
-    </LinearLayout>
+            android:textSize="@dimen/activity_vertical_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

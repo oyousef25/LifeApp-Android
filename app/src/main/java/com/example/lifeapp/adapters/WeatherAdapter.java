@@ -52,7 +52,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //Creating a new view
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_home_recyclerview, null);
+                .inflate(R.layout.fragment_weather_recyclerview, parent, false);
 
         //Returning our view
         return new WeatherAdapter.CustomViewHolder(view);
@@ -72,7 +72,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
         //Creating our API url
         String url =
                 "https://api.openweathermap.org/data/2.5/weather?" +
-                        "q=" + weatherItem.getCityName() +
+                        "q=" + weatherItem.getCityName().toLowerCase() +
                         "&units=metric" +
                         "&appid="+apiKey;
 
@@ -105,7 +105,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
             //Making sure we only create 1 object instance
             WeatherSingleton.getInstance(context).getRequestQueue().add(request);
         }
-        //Setting the weatherItem's temp
+        //Setting the weatherItem's tempreature
         holder.temp.setText(weatherItem.getTemp()+"\u2103");
     }
 

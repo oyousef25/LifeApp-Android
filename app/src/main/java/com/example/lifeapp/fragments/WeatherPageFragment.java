@@ -79,9 +79,6 @@ public class WeatherPageFragment extends Fragment {
         //Creating a new connection with our db
         WeatherDB db = new WeatherDB(getContext());
 
-        Weather weather = new Weather("Windsor");
-        db.addWeather(weather);
-
         //Reading all weather data
         ArrayList<Weather> weathers = db.getAllWeathers();
 

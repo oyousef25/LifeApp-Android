@@ -44,7 +44,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Custom
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //Creating a new view
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_home_recyclerview, null);
+                .inflate(R.layout.fragment_home_recyclerview, parent, false);
 
         //Returning our view
         return new CustomViewHolder(view);

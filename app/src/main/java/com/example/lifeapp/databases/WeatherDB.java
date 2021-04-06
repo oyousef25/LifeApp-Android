@@ -45,7 +45,7 @@ public class WeatherDB extends SQLiteOpenHelper {
 
 
     //CREATE TABLE
-    public static final String CREATE_WEATHER_TABLE = "CREATE TABLE" +
+    public static final String CREATE_WEATHER_TABLE = "CREATE TABLE " +
             TABLE_WEATHER + "(" + COLUMN_ID + " INTEGER PRIMARY KEY," +
             COLUMN_CITY + " TEXT, " + COLUMN_TEMP + " TEXT, " + COLUMN_LAST_UPDATED + " INTEGER)";
 
