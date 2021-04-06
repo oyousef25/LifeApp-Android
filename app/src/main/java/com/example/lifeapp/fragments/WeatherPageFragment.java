@@ -3,6 +3,7 @@ package com.example.lifeapp.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +15,7 @@ import com.example.lifeapp.R;
 import com.example.lifeapp.adapters.WeatherAdapter;
 import com.example.lifeapp.databases.WeatherDB;
 import com.example.lifeapp.pojo.Weather;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -72,6 +74,22 @@ public class WeatherPageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_weather_page, container, false);
+
+        /*
+            Floating action button navigating to the form
+         */
+        //Locating our fab button
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        //Firing an action when the user clicks on the fab button
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Navigating to our create form
+                Navigation.findNavController(view)
+                        .navigate(R.id.action_nav_weather_to_createWeatherFragment);
+            }
+        });
+
 
         /*
             Reading all weather data from the db

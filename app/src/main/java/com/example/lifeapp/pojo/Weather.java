@@ -26,6 +26,12 @@ public class Weather {
 
 
     /*
+        Empty Constructor
+     */
+    public Weather() {
+    }
+
+    /*
         Constructor
      */
     public Weather(String cityName) {

@@ -1,6 +1,8 @@
 package com.example.lifeapp.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,7 +78,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
                         "&units=metric" +
                         "&appid="+apiKey;
 
-        //Make a new API request after 10 mins
+//        //Make a new API request after 10 mins
         if (System.currentTimeMillis() - weatherItem.getLastUpdated() > 600000){
             //Make a new request
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -127,7 +129,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
      * CustomViewHolder()
      * CustomViewHolder class that we are going to use in our adapter
      */
-    class CustomViewHolder extends RecyclerView.ViewHolder{
+    class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
 
         //Properties
         protected TextView cityName;
@@ -144,9 +146,62 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            /*
+                Locating our XML elements
+             */
             this.cityName = itemView.findViewById(R.id.cityName);
             this.temp = itemView.findViewById(R.id.tempTextView);
+            //Adding action when the user long clicks on an item(Delete record)
+            itemView.setOnLongClickListener(this);
 
+        }
+
+        /**
+         * @author Omar Yousef
+         * @version 1.0
+         * @date April 6th 2021
+         *
+         * OnLongClick():
+         * When the user clicks on an item for long we ask them if they would like to delete the record
+         * @param view
+         * @return
+         */
+        @Override
+        public boolean onLongClick(View view) {
+            //Building a new alert popup dialogue box using the Builder pattern to make sure the user would like to delete the record
+            new AlertDialog.Builder(context)
+                    //Setting the dialogue title
+                    .setTitle("Delete")
+                    //Setting the dialogue message
+                    .setMessage("Are you sure you want to delete " +
+                            weatherArrayList.get(getLayoutPosition()).getCityName() + "?")
+                    //Setting icon
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    //setting the positive button
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //Creating a new db connection
+                            WeatherDB db = new WeatherDB(context);
+
+                            //Delete record from the weather database
+                            db.deleteWeather(weatherArrayList.get(getLayoutPosition()).getId());
+
+                            //Delete the record from the weather ArrayList
+                            weatherArrayList.remove(getLayoutPosition());
+
+                            //Notify the RecyclerView the item was removed
+                            notifyItemRemoved(getAdapterPosition());
+
+                            //Closing connection with the weather db
+                            db.close();
+                        }
+                    })
+                    //setting the negative button
+                    .setNegativeButton("No", null)
+                    //Showing the dialogue box that we built
+                    .show();
+            return false;
         }
     }
 }
