@@ -140,6 +140,7 @@ public class WeatherDB extends SQLiteOpenHelper {
         return weather;
     }
 
+
     /**
      * @author Omar Yousef
      * @version 1.0
@@ -176,6 +177,7 @@ public class WeatherDB extends SQLiteOpenHelper {
         return weatherArrayList;
     }
 
+
     /**
      * @author Omar Yousef
      * @version 1.0
@@ -203,6 +205,7 @@ public class WeatherDB extends SQLiteOpenHelper {
         return db.update(TABLE_WEATHER, values, COLUMN_ID + "=?",
                 new String[]{String.valueOf(weather.getId())});
     }
+
 
     /**
      * @author Omar Yousef
