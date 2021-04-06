@@ -3,12 +3,19 @@ package com.example.lifeapp.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lifeapp.R;
+import com.example.lifeapp.adapters.WeatherAdapter;
+import com.example.lifeapp.databases.WeatherDB;
+import com.example.lifeapp.pojo.Weather;
+
+import java.util.ArrayList;
 
 /**
  * @author Omar Yousef
@@ -64,6 +71,37 @@ public class WeatherPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weather_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_weather_page, container, false);
+
+        /*
+            Reading all weather data from the db
+         */
+        //Creating a new connection with our db
+        WeatherDB db = new WeatherDB(getContext());
+
+        //Reading all weather data
+        ArrayList<Weather> weathers = db.getAllWeathers();
+
+        //closing connection with the db
+        db.close();
+
+        /*
+            Weather Recyclerview
+         */
+        //Locating our recyclerview
+        RecyclerView weatherRecycler = view.findViewById(R.id.weatherList);
+
+        //creating a new adapter instance
+        WeatherAdapter adapter= new WeatherAdapter(weathers, getContext());
+
+        //setting the adapter
+        weatherRecycler.setAdapter(adapter);
+
+        //setting the layout manager
+        weatherRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        //return view
+        return view;
     }
 }
