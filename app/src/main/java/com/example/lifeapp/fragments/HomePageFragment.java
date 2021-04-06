@@ -3,6 +3,8 @@ package com.example.lifeapp.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -11,6 +13,10 @@ import android.view.ViewGroup;
 
 import com.example.lifeapp.R;
 import com.example.lifeapp.adapters.CustomViewpager2Adapter;
+import com.example.lifeapp.adapters.HomePageAdapter;
+import com.example.lifeapp.pojo.CategoryItem;
+
+import java.util.ArrayList;
 
 /**
  * @author Omar Yousef
@@ -73,6 +79,27 @@ public class HomePageFragment extends Fragment {
         homePager.setAdapter(new CustomViewpager2Adapter(getActivity()));
 
         //setting the viewpager's animations
+
+
+        //Locate the recyclerView
+        RecyclerView recyclerView = view.findViewById(R.id.weatherList);
+
+        //Create an arrayList
+        ArrayList<CategoryItem> categoryItems = new ArrayList<>();
+
+        //Add to the arrayList
+        categoryItems.add(new CategoryItem(R.drawable.recipes, "Recipes"));
+        categoryItems.add(new CategoryItem(R.drawable.exercises, "Exercises"));
+        categoryItems.add(new CategoryItem(R.drawable.locations, "Locations"));
+
+
+        //Set the Layout manager(Our XML layout)
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        //Set the Adapter
+        recyclerView.setAdapter(new HomePageAdapter(categoryItems, getContext()));
+
+
 
         return view;
     }

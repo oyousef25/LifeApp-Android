@@ -23,10 +23,19 @@
         android:id="@+id/nav_weather"
         android:name="com.example.lifeapp.fragments.WeatherPageFragment"
         android:label="WEATHER"
-        tools:layout="@layout/fragment_weather_page" />
+        tools:layout="@layout/fragment_weather_page" >
+        <action
+            android:id="@+id/action_nav_weather_to_createWeatherFragment"
+            app:destination="@id/createWeatherFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_account"
         android:name="com.example.lifeapp.fragments.AccountPageFragment"
         android:label="MY ACCOUNT"
         tools:layout="@layout/fragment_account_page" />
+    <fragment
+        android:id="@+id/createWeatherFragment"
+        android:name="com.example.lifeapp.fragments.CreateWeatherFragment"
+        android:label="fragment_create_weather"
+        tools:layout="@layout/fragment_create_weather" />
 </navigation>
