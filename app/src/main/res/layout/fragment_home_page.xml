@@ -11,7 +11,7 @@
         android:layout_width="400dp"
         android:layout_height="200dp"
         android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/storiesList"
+        app:layout_constraintBottom_toTopOf="@+id/weatherList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.012" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/storiesList"
+        android:id="@+id/weatherList"
         android:layout_width="400dp"
         android:layout_height="460dp"
         android:layout_marginBottom="55dp"

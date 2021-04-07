@@ -107,7 +107,7 @@ public class WeatherPageFragment extends Fragment {
             Weather Recyclerview
          */
         //Locating our recyclerview
-        RecyclerView weatherRecycler = view.findViewById(R.id.storiesList);
+        RecyclerView weatherRecycler = view.findViewById(R.id.weatherList);
 
         //creating a new adapter instance
         WeatherAdapter adapter= new WeatherAdapter(weathers, getContext());

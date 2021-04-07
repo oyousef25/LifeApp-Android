@@ -82,7 +82,7 @@ public class HomePageFragment extends Fragment {
 
 
         //Locate the recyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.storiesList);
+        RecyclerView recyclerView = view.findViewById(R.id.weatherList);
 
         //Create an arrayList
         ArrayList<CategoryItem> categoryItems = new ArrayList<>();
