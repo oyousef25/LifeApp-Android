@@ -25,7 +25,7 @@ public class WeatherDB extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
 
     //DB name
-    public static final String DATABASE_NAME = "lifeapp";
+    public static final String DATABASE_NAME = "weatherdb";
 
     //Table name
     public static final String TABLE_WEATHER = "weather";

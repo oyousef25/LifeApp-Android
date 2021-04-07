@@ -6,8 +6,9 @@
     tools:context=".fragments.StoriesPageFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/storiesList"
-    android:layout_width="match_parent"
-    android:layout_height="672dp" />
+        android:id="@+id/storiesList"
+        android:layout_width="match_parent"
+        android:layout_height="672dp"
+        android:padding="10dp" />
 
 </FrameLayout>

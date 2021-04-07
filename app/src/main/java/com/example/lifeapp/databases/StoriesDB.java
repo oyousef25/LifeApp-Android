@@ -25,7 +25,7 @@ public class StoriesDB extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
 
     //DB name
-    public static final String DATABASE_NAME = "lifeapp";
+    public static final String DATABASE_NAME = "storiesdb";
 
     //Table name
     public static final String TABLE_STORIES = "stories";
@@ -45,7 +45,7 @@ public class StoriesDB extends SQLiteOpenHelper {
 
     //CREATE TABLE
     public static final String CREATE_STORIES_TABLE =  "CREATE TABLE " +
-            TABLE_STORIES + "(" + COLUMN_ID + " INTEGER PRIMARY KEY," +
+            TABLE_STORIES + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " +
             COLUMN_TITLE + " TEXT, " + COLUMN_DESCRIPTION + " TEXT)";
 
 
@@ -148,7 +148,8 @@ public class StoriesDB extends SQLiteOpenHelper {
         ArrayList<Story> stories = new ArrayList<>();
 
         //Using the Cursor we are going to retrieve all records from the stories table
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_STORIES, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " +
+                TABLE_STORIES, null);
 
         //While there is more story records, add those records values to our story objects
         while(cursor.moveToNext()){
