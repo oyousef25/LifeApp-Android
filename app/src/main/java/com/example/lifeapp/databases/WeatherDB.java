@@ -25,7 +25,7 @@ public class WeatherDB extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
 
     //DB name
-    public static final String DATABASE_NAME = "lifeapp";
+    public static final String DATABASE_NAME = "weatherdb";
 
     //Table name
     public static final String TABLE_WEATHER = "weather";
@@ -64,6 +64,7 @@ public class WeatherDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        //Creating our weather table
         sqLiteDatabase.execSQL(CREATE_WEATHER_TABLE);
     }
 
@@ -157,10 +158,10 @@ public class WeatherDB extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " +
                 TABLE_WEATHER, null);
 
-        //Creating a new weather arrayList to sotre the records in it
+        //Creating a new weather arrayList to store the records in it
         ArrayList<Weather> weatherArrayList = new ArrayList<>();
 
-        //Storing all table records in a weather arrayLisr
+        //Storing all table records in a weather arrayList
         while(cursor.moveToNext()){
             weatherArrayList.add(new Weather(
                     cursor.getInt(0),
@@ -201,7 +202,7 @@ public class WeatherDB extends SQLiteOpenHelper {
         values.put(COLUMN_TEMP, weather.getTemp());
         values.put(COLUMN_LAST_UPDATED, weather.getLastUpdated());
 
-        //Updating to the database
+        //Updating the table's record
         return db.update(TABLE_WEATHER, values, COLUMN_ID + "=?",
                 new String[]{String.valueOf(weather.getId())});
     }
