@@ -3,12 +3,17 @@ package com.example.lifeapp.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.lifeapp.R;
+import com.example.lifeapp.databases.StoriesDB;
+import com.example.lifeapp.pojo.Story;
 
 /**
  * @author Omar Yousef
@@ -65,6 +70,39 @@ public class CreateFormPageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_create_form_page, container, false);
+
+        //Locating our XML elements(EditTexts and submit button).
+        EditText titleEditText = view.findViewById(R.id.titleEditText);
+        EditText descriptionEditText = view.findViewById(R.id.descriptionEditText);
+        Button submit = view.findViewById(R.id.submitStoryButton);
+
+        //Creating a new Story record when the user clicks on the submit buttons
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Creating a new Story object
+                Story story = new Story();
+
+                //Setting story title to the user's input
+                story.setTitle(titleEditText.getText().toString());
+
+                //Setting the story description to the user's input
+                story.setDescription(descriptionEditText.getText().toString());
+
+                //Creating a new db instance
+                StoriesDB db = new StoriesDB(getContext());
+
+                //Adding the new story object to our storiesdb
+                db.addStory(story);
+
+                //closing connection with the db
+                db.close();
+
+                //Navigating back to the stories page
+                Navigation.findNavController(view).popBackStack();
+            }
+        });
+
 
         //Return view
         return view;
