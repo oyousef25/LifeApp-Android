@@ -13,7 +13,11 @@
         android:id="@+id/nav_stories"
         android:name="com.example.lifeapp.fragments.StoriesPageFragment"
         android:label="STORIES"
-        tools:layout="@layout/fragment_stories_page" />
+        tools:layout="@layout/fragment_stories_page" >
+        <action
+            android:id="@+id/action_nav_stories_to_nav_form"
+            app:destination="@id/nav_form" />
+    </fragment>
     <fragment
         android:id="@+id/nav_form"
         android:name="com.example.lifeapp.fragments.CreateFormPageFragment"

@@ -1,5 +1,8 @@
 package com.example.lifeapp.pojo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * @author Omar Yousef
  * @version 1.0
@@ -8,7 +11,7 @@ package com.example.lifeapp.pojo;
  * Story class:
  * This class will have all what we need to create and update a new Story object
  */
-public class Story {
+public class Story implements Parcelable {
     //Properties
     private int id;
     private String title;
@@ -115,5 +118,17 @@ public class Story {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(title);
+        parcel.writeString(description);
     }
 }

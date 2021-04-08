@@ -3,6 +3,7 @@ package com.example.lifeapp.adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lifeapp.R;
 import com.example.lifeapp.databases.StoriesDB;
 import com.example.lifeapp.databases.WeatherDB;
+import com.example.lifeapp.fragments.CreateFormPageFragment;
 import com.example.lifeapp.pojo.Story;
 
 import java.util.ArrayList;
@@ -65,6 +68,24 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.CustomVi
         //Setting the XML elements values to our object's values
         holder.title.setText(story.getTitle());
         holder.description.setText(story.getDescription());
+
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Creating a new bundle
+                Bundle extra = new Bundle();
+
+                //Passing a UPDATE action type
+                extra.putInt(CreateFormPageFragment.ACTION_TYPE, CreateFormPageFragment.UPDATE);
+
+                //Adding our parcelable
+                extra.putParcelable(CreateFormPageFragment.STORY, storyArrayList.get(position));
+
+                //Navigating to the form page
+                Navigation.findNavController(view).
+                        navigate(R.id.action_nav_stories_to_nav_form, extra);
+            }
+        });
     }
 
     @Override
@@ -91,6 +112,8 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.CustomVi
         protected TextView description;
         //Locating our arrow imageview
         protected ImageView arrow;
+        //The edit icon
+        protected ImageView edit;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -101,6 +124,7 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.CustomVi
             this.title = itemView.findViewById(R.id.storyTitle);
             this.description = itemView.findViewById(R.id.storyDescription);
             this.arrow = itemView.findViewById(R.id.recyclerArrow);
+            this.edit = itemView.findViewById(R.id.editIcon);
 
             //Setting the description visibility to gone automatically
             description.setVisibility(View.GONE);
