@@ -162,13 +162,27 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.CustomVi
 
         @Override
         public void onClick(View view) {
+            //Setting the description's visibility
             description.setVisibility(
+                    //If the description is visible hide it and vice versa
                     description.getVisibility()
                             == View.VISIBLE
                             ? View.GONE : View.VISIBLE);
 
+            //Manipulating the arrow depending on the description's visibility
             if (description.getVisibility() == View.VISIBLE){
                 arrow.setImageResource(R.drawable.up);
+
+                /*
+                    Adding animations to the description
+                 */
+                //Preparing the description for the alpha animation by hiding the text
+                description.setAlpha(0.0f);
+
+                // Starting the animation
+                description.animate()
+                        .alpha(1.0f)
+                        .setListener(null);
             }else{
                 arrow.setImageResource(R.drawable.down);
             }
