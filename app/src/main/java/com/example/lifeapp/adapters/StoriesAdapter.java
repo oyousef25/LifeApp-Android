@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -84,10 +85,12 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.CustomVi
      * CustomViewHolder()
      * CustomViewHolder class that we are going to use in our adapter
      */
-    class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener{
+    class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener, View.OnClickListener{
         //Properties
         protected TextView title;
         protected TextView description;
+        //Locating our arrow imageview
+        protected ImageView arrow;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -97,8 +100,16 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.CustomVi
              */
             this.title = itemView.findViewById(R.id.storyTitle);
             this.description = itemView.findViewById(R.id.storyDescription);
+            this.arrow = itemView.findViewById(R.id.recyclerArrow);
+
+            //Setting the description visibility to gone automatically
+            description.setVisibility(View.GONE);
+            //Making the arrow point down automatically
+            arrow.setImageResource(R.drawable.down);
+
             //Adding action when the user long clicks on an item(Delete record)
             itemView.setOnLongClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
 
@@ -147,6 +158,20 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.CustomVi
                     //Showing the dialogue box that we built
                     .show();
             return false;
+        }
+
+        @Override
+        public void onClick(View view) {
+            description.setVisibility(
+                    description.getVisibility()
+                            == View.VISIBLE
+                            ? View.GONE : View.VISIBLE);
+
+            if (description.getVisibility() == View.VISIBLE){
+                arrow.setImageResource(R.drawable.up);
+            }else{
+                arrow.setImageResource(R.drawable.down);
+            }
         }
     }
 
