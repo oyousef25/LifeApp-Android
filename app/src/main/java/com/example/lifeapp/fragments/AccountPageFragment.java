@@ -80,16 +80,20 @@ public class AccountPageFragment extends Fragment {
 
         //3. add to the arrayList
         //Email
-        contactItems.add(new ContactItem(R.drawable.email, "Our Email!", "https://www.facebook.com/"));
+        contactItems.add(new ContactItem(R.drawable.email, "Our Email!"));
         //Phone Number
-        contactItems.add(new ContactItem(R.drawable.phone, "Call Us!", "https://www.facebook.com/"));
+        contactItems.add(new ContactItem(R.drawable.phone, "Call Us!"));
         //Location
-        contactItems.add(new ContactItem(R.drawable.our_location, "Our Location!", "https://www.facebook.com/"));
+        contactItems.add(new ContactItem(R.drawable.our_location, "Our Location!"));
         //Facebook page
-        contactItems.add(new ContactItem(R.drawable.facebook, "Follow our FaceBook page!", "https://www.facebook.com/"));
+        contactItems.add(new ContactItem(R.drawable.facebook, "Follow our FaceBook page!"));
+
+        //Creadits fragment
+        //Facebook page
+        contactItems.add(new ContactItem(R.drawable.credits, "Credits"));
 
         //4. set the recyclerview adapter
-        contactList.setAdapter(new ContactsAdapter(contactItems, getContext()));
+        contactList.setAdapter(new ContactsAdapter(getActivity(), contactItems, getContext()));
 
         //5. Set the recyclerview layout manager
         contactList.setLayoutManager(new LinearLayoutManager(getContext()));

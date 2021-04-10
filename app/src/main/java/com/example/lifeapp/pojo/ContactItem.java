@@ -22,18 +22,15 @@ public class ContactItem {
      * @date April 10th 2021
      * @version 1.0
      *
-     * ContactItem class:
-     * Class constructor to allow us to create a new instance of the object
+     * Class constructor:
+     * A custom constructor for the credits item
      * @param image
      * @param title
-     * @param url
      */
-    public ContactItem(Integer image, String title, String url) {
+    public ContactItem(Integer image, String title) {
         this.image = image;
         this.title = title;
-        this.url = url;
     }
-
 
     /**
      * @author Omar Yousef
