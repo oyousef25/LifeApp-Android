@@ -26,12 +26,14 @@ public class CustomViewpager2Adapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return HomeViewpagerFragment.newInstance(R.drawable.pager_recipes);
+                return HomeViewpagerFragment.newInstance(R.drawable.cover_image);
             case 1:
-                return HomeViewpagerFragment.newInstance(R.drawable.pager_exercises);
+                return HomeViewpagerFragment.newInstance(R.drawable.pager_recipes);
             case 2:
-                return HomeViewpagerFragment.newInstance(R.drawable.pager_locations);
+                return HomeViewpagerFragment.newInstance(R.drawable.pager_exercises);
             case 3:
+                return HomeViewpagerFragment.newInstance(R.drawable.pager_locations);
+            case 4:
                 return HomeViewpagerFragment.newInstance(R.drawable.pager_stories);
             default:
                 return HomeViewpagerFragment.newInstance(R.drawable.pager_exercises);
