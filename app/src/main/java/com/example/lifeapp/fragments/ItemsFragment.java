@@ -3,12 +3,18 @@ package com.example.lifeapp.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lifeapp.R;
+import com.example.lifeapp.adapters.OthersAdapter;
+import com.example.lifeapp.pojo.Item;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +67,26 @@ public class ItemsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_items, container, false);
+        View view = inflater.inflate(R.layout.fragment_items, container, false);
+
+        //PlaceHolder list
+        ArrayList<Item> itemArrayList = new ArrayList<>();
+
+        //Adding to the arrayList
+        itemArrayList.add(new Item(R.drawable.pizza, "Pizza", "Add tomato salsa w cheese"));
+
+        //Locating our recyclerview
+        RecyclerView recyclerView = view.findViewById(R.id.itemsList);
+
+        //Creating a new OtherAdapter instance
+        OthersAdapter adapter = new OthersAdapter(itemArrayList, getContext());
+
+        //setting the adapter
+        recyclerView.setAdapter(adapter);
+
+        //setting the layoutManager
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        return view;
     }
 }
