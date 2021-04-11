@@ -12,7 +12,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lifeapp.R;
+import com.example.lifeapp.fragments.ItemsFragment;
 import com.example.lifeapp.pojo.CategoryItem;
+import com.example.lifeapp.pojo.Item;
 
 import java.util.ArrayList;
 
@@ -26,9 +28,18 @@ import java.util.ArrayList;
  */
 public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.CustomViewHolder>{
 
-    //Properties
+    /*
+        Properties
+     */
     private ArrayList<CategoryItem> categoryItems;
     private Context context;
+
+    /*
+        different categories arrayLists
+     */
+    static ArrayList<Item> recipesList;
+    static ArrayList<Item> exercisesList;
+    static ArrayList<Item> locationsList;
 
     /**
      * HomePageAdapter constructor
@@ -110,6 +121,43 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Custom
         @Override
         public void onClick(View view) {
             Navigation.findNavController(view).navigate(R.id.action_nav_home_to_itemsFragment);
+
+            //Adding to the recipesList
+            recipesList = new ArrayList<>();
+            recipesList.add(new Item(R.drawable.pizza, "Pizza", "first make the dough then add tomato sauce then add cheese with pineapple"));
+            recipesList.add(new Item(R.drawable.hummus, "Hummus", "Blend chickpeas with garlic, tahini sauce and lemon"));
+            recipesList.add(new Item(R.drawable.curry, "Curry", "Add the curry spice mix with your choice of meat"));
+            recipesList.add(new Item(R.drawable.nachos, "Nachos" ,"Add doritos chips with your choice of veggies and meat and then add nacho cheese sauce with sour cream"));
+            recipesList.add(new Item(R.drawable.icecap, "Healthy Ice Capp", "Add milk with sugar and keep mixing and then add your coffee with ice"));
+
+            if (this.getLayoutPosition() == 0) {
+                //Make the itemArrayList equal to our recipesList
+                ItemsFragment.itemArrayList = recipesList;
+            }
+//            } else if (this.getLayoutPosition() == 1) {
+//                //Make the itemArrayList equal to our exercisesList
+//
+//            }else if (this.getLayoutPosition() == 2) {
+//                //Make the itemArrayList equal to our locationsList
+//            }
+
+            /*
+                ArrayLists
+             */
+
+
+            //Adding to the exercisesList
+//            exercisesList.add(new Item());
+//            exercisesList.add(new Item());
+//            exercisesList.add(new Item());
+//            exercisesList.add(new Item());
+//            exercisesList.add(new Item());
+//
+//            //Adding to the locationsList
+//            locationsList.add(new Item());
+//            locationsList.add(new Item());
+//            locationsList.add(new Item());
+//            locationsList.add(new Item());
         }
     }
 }

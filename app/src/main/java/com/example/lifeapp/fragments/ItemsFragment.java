@@ -22,6 +22,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class ItemsFragment extends Fragment {
+    public static ArrayList<Item> itemArrayList;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,12 +69,6 @@ public class ItemsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_items, container, false);
-
-        //PlaceHolder list
-        ArrayList<Item> itemArrayList = new ArrayList<>();
-
-        //Adding to the arrayList
-        itemArrayList.add(new Item(R.drawable.recipes, "Pizza", "Add tomato salsa w cheese"));
 
         //Locating our recyclerview
         RecyclerView recyclerView = view.findViewById(R.id.itemsList);
