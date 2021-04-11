@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lifeapp.R;
@@ -81,7 +82,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Custom
      * CustomViewHolder()
      * CustomViewHolder class that we are going to use in our adapter
      */
-    class CustomViewHolder extends RecyclerView.ViewHolder{
+    class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         //Properties
         protected ImageView image;
@@ -102,7 +103,13 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Custom
             this.image = itemView.findViewById(R.id.homeImage);
             this.title = itemView.findViewById(R.id.homeTitle);
 
+            //Click event: Take the user to the itemsFragment when they click on a homeRecycler item
+            itemView.setOnClickListener(this);
+        }
 
+        @Override
+        public void onClick(View view) {
+            Navigation.findNavController(view).navigate(R.id.action_nav_home_to_itemsFragment);
         }
     }
 }

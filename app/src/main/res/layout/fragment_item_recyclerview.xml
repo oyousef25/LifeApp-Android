@@ -15,39 +15,36 @@
 
         <ImageView
             android:id="@+id/itemImage"
-            android:layout_width="140dp"
-            android:layout_height="160dp"
-            android:layout_marginEnd="5dp"
+            android:layout_width="170dp"
+            android:layout_height="115dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/itemTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pizza" />
+            app:srcCompat="@drawable/recipes" />
 
         <TextView
             android:id="@+id/itemTitle"
-            android:layout_width="250dp"
-            android:layout_height="64dp"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="@dimen/activity_vertical_margin"
+            android:textSize="@dimen/story_title"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itemImage"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/itemDescription"
-            android:layout_width="250dp"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:paddingLeft="10dp"
+            android:layout_marginStart="4dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itemImage"
             app:layout_constraintTop_toBottomOf="@+id/itemTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

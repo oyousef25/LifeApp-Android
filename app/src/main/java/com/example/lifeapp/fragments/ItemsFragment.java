@@ -73,7 +73,7 @@ public class ItemsFragment extends Fragment {
         ArrayList<Item> itemArrayList = new ArrayList<>();
 
         //Adding to the arrayList
-        itemArrayList.add(new Item(R.drawable.pizza, "Pizza", "Add tomato salsa w cheese"));
+        itemArrayList.add(new Item(R.drawable.recipes, "Pizza", "Add tomato salsa w cheese"));
 
         //Locating our recyclerview
         RecyclerView recyclerView = view.findViewById(R.id.itemsList);
