@@ -57,7 +57,7 @@
         tools:layout="@layout/fragment_credits" />
     <fragment
         android:id="@+id/itemsFragment"
-        android:name="com.example.lifeapp.ItemsFragment"
+        android:name="com.example.lifeapp.fragments.ItemsFragment"
         android:label="fragment_items"
         tools:layout="@layout/fragment_items" />
 </navigation>
