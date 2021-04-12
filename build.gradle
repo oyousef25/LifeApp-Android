@@ -16,6 +16,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+
+        //Adding jetpack to our project
+        maven { url 'https://jitpack.io' }
     }
 }
 

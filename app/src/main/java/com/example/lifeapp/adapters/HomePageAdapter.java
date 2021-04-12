@@ -136,22 +136,24 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Custom
             recipesList.add(new Item(R.drawable.wings, "Healthy Wings", "add chicken, butter and salt nd pepper in a pan and put them in the oven on 360 degrees for 1 hour."));
 
             //Adding to the exercisesList
+            exercisesList = new ArrayList<>();
             exercisesList.add(new Item(R.drawable.pushups, "Push ups", "one of the most basic, yet effective, body weight moves you can perform because of the number of muscles that are recruited to perform them."));
             exercisesList.add(new Item(R.drawable.running, "Running", "running is one of the most straightforward ways to get the important benefits of exercise"));
             exercisesList.add(new Item(R.drawable.squat, "Squat", "Squats increase lower body and core strength, as well as flexibility in your lower back and hips."));
             exercisesList.add(new Item(R.drawable.plank, "Plank", "A healthy body requires a strong core at its foundation, so don’t neglect core-specific moves like the plank."));
             exercisesList.add(new Item(R.drawable.pullups, "Pull-ups", "pull ups Strengthen the back muscles, Strengthen the arm and shoulder muscles and Improve grip strength"));
             exercisesList.add(new Item(R.drawable.aerobics, "Aerobics", "Aerobics Improves cardiovascular conditioning, Decreases risk of heart disease and Lowers blood pressure"));
-            exercisesList.add(new Item(R.drawable.lunge, "Lunge", "Challenging your balance is an essential part of a well-rounded exercise routine. Lunges do just that, promoting functional movement, while also increasing strength in your legs and glutes."));
-//
-//            //Adding to the locationsList
-            locationsList.add(new Item(R.drawable.point_pelee, "Point Pelee National Park", "A beautiful park located in Leamington ontario that has beautiful lakes and trails."));
-            locationsList.add(new Item(R.drawable.devonwood, "Devonwood Conservation Area", "Devonwood is one of the largest forests in Windsor ontario that has a wonderful wildlife"));
+            exercisesList.add(new Item(R.drawable.lunge, "Lunge", "Challenging your balance is an essential part of a well-rounded exercise routine."));
+
+            //Adding to the locationsList
+            locationsList = new ArrayList<>();
+            locationsList.add(new Item(R.drawable.point_pelee, "Point Pelee", "A beautiful park located in Leamington ontario that has beautiful lakes and trails."));
+            locationsList.add(new Item(R.drawable.devonwood, "Devonwood Forest", "Devonwood is one of the largest forests in Windsor ontario that has a wonderful wildlife"));
             locationsList.add(new Item(R.drawable.malden_park, "Malden Park", "A wonderful park for photographers, bikers and hikers"));
             locationsList.add(new Item(R.drawable.little_river, "Little River Corridor", "An amazing trail for bikers or people who are looking for a hiking place."));
             locationsList.add(new Item(R.drawable.riverfront, "Riverfront Trail", "A beautiful trail that goes all the way from west windsor to east windsor"));
-            locationsList.add(new Item(R.drawable.garden, "Spring Garden", "Spring Garden Loop is a 2.4 kilometer lightly trafficked loop trail located near Windsor, Ontario, Canada that features beautiful wild flowers and is good for all skill levels."));
-            locationsList.add(new Item(R.drawable.blue_heron, "Blue Heron Loop", "Blue Heron Loop is a 3.2 kilometer lightly trafficked loop trail located near Windsor, Ontario, Canada that features a lake and is good for all skill levels."));
+            locationsList.add(new Item(R.drawable.garden, "Spring Garden", "Spring Garden Loop is a 2.4 kilometer lightly trafficked loop trail located near Windsor, Ontario, Canada."));
+            locationsList.add(new Item(R.drawable.blue_heron, "Blue Heron", "Blue Heron Loop is a 3.2 kilometer lightly trafficked loop trail located near Windsor, Ontario, Canada."));
 
             if (this.getLayoutPosition() == 0) {
                 //Make the itemArrayList equal to our recipesList

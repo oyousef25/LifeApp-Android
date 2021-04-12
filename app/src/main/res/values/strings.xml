@@ -6,4 +6,16 @@
     <string name="title_account">Account</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Credits Page -->
+    <string name="author_title">App Creator/Author</string>
+    <string name="author_name">Omar Yousef</string>
+
+    <string name="prof_title">Professor</string>
+    <string name="prof_name">Cai Filiault</string>
+
+    <string name="assets_title">Assets</string>
+    <string name="first_source">Canva.com</string>
+    <string name="second_source">Unsplash.com</string>
+    <string name="third_source">FlatIcon.com</string>
 </resources>
