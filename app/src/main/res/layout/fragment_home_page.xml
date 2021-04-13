@@ -10,21 +10,13 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/homeViewpager"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_gravity="center"/>
+        android:layout_height="240dp"
+        android:layout_gravity="center" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/weatherList"
         android:layout_width="match_parent"
-        android:layout_height="662dp"
+        android:layout_height="690dp"
         android:layout_gravity="center"
-        android:paddingBottom="270dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:paddingBottom="250dp" />
 </LinearLayout>

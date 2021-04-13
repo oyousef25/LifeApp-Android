@@ -134,7 +134,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Custom
             recipesList.add(new Item(R.drawable.curry, "Curry", "Add the curry spice mix with your choice of meat"));
             recipesList.add(new Item(R.drawable.nachos, "Nachos" ,"Add doritos chips with your choice of veggies and meat and then add nacho cheese sauce with sour cream"));
             recipesList.add(new Item(R.drawable.icecap, "Healthy Ice Capp", "Add milk with sugar and keep mixing and then add your coffee with ice"));
-            recipesList.add(new Item(R.drawable.grilled_chicken, "Grilled Chicken", ""));
+            recipesList.add(new Item(R.drawable.grilled_chicken, "Grilled Chicken", "A healthy grilled chicken recipe that assures you have a strong body!"));
             recipesList.add(new Item(R.drawable.wings, "Healthy Wings", "add chicken, butter and salt nd pepper in a pan and put them in the oven on 360 degrees for 1 hour."));
 
             //Adding to the exercisesList
