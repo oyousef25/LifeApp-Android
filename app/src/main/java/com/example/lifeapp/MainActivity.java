@@ -1,11 +1,14 @@
 package com.example.lifeapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.lifeapp.fragments.CreditsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,8 +22,25 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
-    FragmentManager fm;
+    //Creating a new shared preferences object so we can use it to retrieve the current settings
     SharedPreferences sharedPreferences;
+
+    //Creating a textView for our categoryTitle
+    TextView categoryTitle;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        /*
+            Shared Preferences (Settings menu)
+         */
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        if (sharedPreferences.getBoolean("background_color", false)){
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +55,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-
-        /*
-            Shared Preferences (Settings menu)
-         */
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     }
 
     @Override
@@ -55,12 +70,6 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
-        }else if (id == R.id.action_credits){
-//            fm = getSupportFragmentManager();
-//            fm.beginTransaction()
-//                    .replace(R.id.fragment_container_view_tag, CreditsFragment.class, null)
-//                    .addToBackStack(null)
-//                    .commit();
         }
         return super.onOptionsItemSelected(item);
     }

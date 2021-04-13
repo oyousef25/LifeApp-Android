@@ -6,10 +6,10 @@
         android:title="Fahrenheit" />
     <CheckBoxPreference
         android:defaultValue="false"
-        android:key="big_title"
-        android:title="Bigger home page titles" />
+        android:key="desc_color"
+        android:title="Darker story description"/>
     <CheckBoxPreference
         android:defaultValue="false"
-        android:key="title_color"
-        android:title="Black Title" />
+        android:key="background_color"
+        android:title="Set the Background color to white" />
 </PreferenceScreen>

@@ -1,5 +1,6 @@
 package com.example.lifeapp.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,9 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.preference.PreferenceManager;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.lifeapp.R;
 import com.example.lifeapp.adapters.CustomViewpager2Adapter;
@@ -29,6 +33,7 @@ import java.util.ArrayList;
  * a RecyclerView(Exercises, recipes, and locations)
  */
 public class HomePageFragment extends Fragment {
+
     //Creating a viewpager2 variable to connect with our XML file viewpager
     ViewPager2 homePager;
 
@@ -99,8 +104,7 @@ public class HomePageFragment extends Fragment {
         //Set the Adapter
         recyclerView.setAdapter(new HomePageAdapter(categoryItems, getContext()));
 
-
-
+        //Returning the view
         return view;
     }
 

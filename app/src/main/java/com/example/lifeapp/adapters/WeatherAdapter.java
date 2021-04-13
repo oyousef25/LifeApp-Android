@@ -37,6 +37,7 @@ import java.util.ArrayList;
  * Weather adapter to help us create a weather recyclerview
  */
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomViewHolder>{
+    //Creating a new shared preferences object so we can use it to retrieve the current settings
     SharedPreferences sharedPreferences;
 
     //Properties
@@ -80,8 +81,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
                 "&units=metric" +
                 "&appid="+apiKey;
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-
         //Make a new API request after 10 mins
         if (System.currentTimeMillis() - weatherItem.getLastUpdated() > 600000){
             //Make a new request
@@ -111,11 +110,21 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
             //Making sure we only create 1 object instance
             WeatherSingleton.getInstance(context).getRequestQueue().add(request);
         }
+
+        /*
+            Settings item(Fahrenheit ot celsius and vice versa)
+         */
+        //Getting the current context for out shared preferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+
         //Setting the weatherItem's tempreature
         if (sharedPreferences.getBoolean("temp_unit", false) == true){
+            //Converting from celsius to fahrenheit
             double fahrenheit = (weatherItem.getTemp() * (9/5)) + 32;
+            //Setting the fahrenheit temp with the fahrenheit unicode
             holder.temp.setText(fahrenheit+"\u2109");
         }else{
+            //Setting the temp to the default celsius value
             holder.temp.setText(weatherItem.getTemp()+"\u2103");
         }
     }
