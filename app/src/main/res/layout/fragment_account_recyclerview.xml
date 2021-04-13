@@ -40,7 +40,7 @@
             android:paddingBottom="20dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="@dimen/recycler_text"
+            android:textSize="@dimen/medium_text"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

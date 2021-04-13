@@ -6,8 +6,8 @@
         android:title="Fahrenheit" />
     <CheckBoxPreference
         android:defaultValue="false"
-        android:key="clear_animations"
-        android:title="Clear Animations" />
+        android:key="big_title"
+        android:title="Bigger home page titles" />
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="title_color"

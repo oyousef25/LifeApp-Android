@@ -52,7 +52,7 @@
         tools:layout="@layout/fragment_create_weather" />
     <fragment
         android:id="@+id/creditsFragment"
-        android:name="com.example.lifeapp.CreditsFragment"
+        android:name="com.example.lifeapp.fragments.CreditsFragment"
         android:label="CREDITS"
         tools:layout="@layout/fragment_credits" />
     <fragment

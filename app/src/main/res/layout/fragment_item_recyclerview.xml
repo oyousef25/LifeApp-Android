@@ -31,7 +31,7 @@
             android:layout_weight="1"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="@dimen/story_title"
+            android:textSize="@dimen/small_title"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/itemImage"
@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="TextView"
+            android:textSize="@dimen/other_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/itemImage"
             app:layout_constraintTop_toBottomOf="@+id/itemTitle" />

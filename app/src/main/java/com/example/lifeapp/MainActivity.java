@@ -7,16 +7,19 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.lifeapp.fragments.CreditsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+    FragmentManager fm;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -52,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
+        }else if (id == R.id.action_credits){
+//            fm = getSupportFragmentManager();
+//            fm.beginTransaction()
+//                    .replace(R.id.fragment_container_view_tag, CreditsFragment.class, null)
+//                    .addToBackStack(null)
+//                    .commit();
         }
         return super.onOptionsItemSelected(item);
     }
