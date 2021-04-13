@@ -9,6 +9,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.LifeApp">
+        <activity android:name=".SettingsActivity"></activity>
         <activity
             android:name=".SplashScreen"
             android:theme="@style/SplashScreen"

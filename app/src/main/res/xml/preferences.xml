@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="temp_unit"
+        android:title="Fahrenheit" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="clear_animations"
+        android:title="Clear Animations" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="title_color"
+        android:title="Black Title" />
+</PreferenceScreen>

@@ -58,6 +58,6 @@
     <fragment
         android:id="@+id/itemsFragment"
         android:name="com.example.lifeapp.fragments.ItemsFragment"
-        android:label="fragment_items"
+        android:label="Items"
         tools:layout="@layout/fragment_items" />
 </navigation>
