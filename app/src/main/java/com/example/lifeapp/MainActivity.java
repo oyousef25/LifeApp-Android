@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -24,6 +25,9 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
     //Creating a new shared preferences object so we can use it to retrieve the current settings
     SharedPreferences sharedPreferences;
+
+    //Locating out container to change its background
+    ConstraintLayout constraintLayout;
 
     //Creating a textView for our categoryTitle
     TextView categoryTitle;
@@ -37,8 +41,11 @@ public class MainActivity extends AppCompatActivity {
          */
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
+        constraintLayout = findViewById(R.id.container);
         if (sharedPreferences.getBoolean("background_color", false)){
-
+            constraintLayout.setBackgroundColor(Color.WHITE);
+        }else{
+            constraintLayout.setBackgroundColor(getResources().getColor(R.color.color_secondary_variant));
         }
     }
 
