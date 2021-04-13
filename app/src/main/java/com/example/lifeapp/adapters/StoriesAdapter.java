@@ -3,7 +3,11 @@ package com.example.lifeapp.adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +35,9 @@ import java.util.ArrayList;
  * This will be the adapter for the stories recyclerview
  */
 public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.CustomViewHolder>{
+    //Creating a new shared preferences object so we can use it to retrieve the current settings
+    SharedPreferences sharedPreferences;
+
     //Properties
     private ArrayList<Story> storyArrayList;
     private Context context;
@@ -68,6 +75,17 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.CustomVi
         //Setting the XML elements values to our object's values
         holder.title.setText(story.getTitle());
         holder.description.setText(story.getDescription());
+
+        /*
+            Make our category items titles bigger
+         */
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+        if (sharedPreferences.getBoolean("desc_color", false)) {
+            holder.description.setTextColor(Color.BLACK);
+        } else {
+            holder.description.setTextColor(Color.GRAY);
+        }
 
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override

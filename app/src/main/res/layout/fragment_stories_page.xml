@@ -9,6 +9,7 @@
         android:id="@+id/storiesList"
         android:layout_width="match_parent"
         android:layout_height="672dp"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:layoutAnimation="@anim/recyclerview_animation"/>
 
 </FrameLayout>

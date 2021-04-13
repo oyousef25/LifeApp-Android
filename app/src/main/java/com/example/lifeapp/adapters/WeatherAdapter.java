@@ -3,6 +3,8 @@ package com.example.lifeapp.adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +37,9 @@ import java.util.ArrayList;
  * Weather adapter to help us create a weather recyclerview
  */
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomViewHolder>{
+    //Creating a new shared preferences object so we can use it to retrieve the current settings
+    SharedPreferences sharedPreferences;
+
     //Properties
     private ArrayList<Weather> weatherArrayList;
     private Context context;
@@ -71,14 +76,12 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
         //Our API Key
         String apiKey = "400cfeeacd415a94e7966090bffd4bd1";
 
-        //Creating our API url
-        String url =
-                "https://api.openweathermap.org/data/2.5/weather?" +
-                        "q=" + weatherItem.getCityName().toLowerCase() +
-                        "&units=metric" +
-                        "&appid="+apiKey;
+        String url = "https://api.openweathermap.org/data/2.5/weather?" +
+                "q=" + weatherItem.getCityName().toLowerCase() +
+                "&units=metric" +
+                "&appid="+apiKey;
 
-//        //Make a new API request after 10 mins
+        //Make a new API request after 10 mins
         if (System.currentTimeMillis() - weatherItem.getLastUpdated() > 600000){
             //Make a new request
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -86,12 +89,19 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
+                                //Reading the main object in the JSON array of objects
                                 JSONObject mainObject = response.getJSONObject("main");
+                                //Getting the temp property value in the main object
                                 weatherItem.setTemp(mainObject.getDouble("temp"));
+                                //Storing the time the link was updated
                                 weatherItem.setLastUpdated(System.currentTimeMillis());
+                                //Opening a new connection with the db
                                 WeatherDB db = new WeatherDB(context);
+                                //updating the weather's data
                                 db.updateWeather(weatherItem);
+                                //Displaying a succeed message in the logcat
                                 Log.d("UPDATE", weatherItem.getCityName() + " TEMP UPDATED");
+                                //If our try statement failed we catch it with this catch statement
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -107,8 +117,23 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
             //Making sure we only create 1 object instance
             WeatherSingleton.getInstance(context).getRequestQueue().add(request);
         }
+
+        /*
+            Settings item(Fahrenheit ot celsius and vice versa)
+         */
+        //Getting the current context for out shared preferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+
         //Setting the weatherItem's tempreature
-        holder.temp.setText(weatherItem.getTemp()+"\u2103");
+        if (sharedPreferences.getBoolean("temp_unit", false) == true){
+            //Converting from celsius to fahrenheit
+            double fahrenheit = (weatherItem.getTemp() * (9/5)) + 32;
+            //Setting the fahrenheit temp with the fahrenheit unicode
+            holder.temp.setText(fahrenheit+"\u2109");
+        }else{
+            //Setting the temp to the default celsius value
+            holder.temp.setText(weatherItem.getTemp()+"\u2103");
+        }
     }
 
     @Override

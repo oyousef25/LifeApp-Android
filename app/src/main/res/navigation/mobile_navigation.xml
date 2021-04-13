@@ -8,7 +8,11 @@
         android:id="@+id/nav_home"
         android:name="com.example.lifeapp.fragments.HomePageFragment"
         android:label="HOME"
-        tools:layout="@layout/fragment_home_page" />
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_nav_home_to_itemsFragment"
+            app:destination="@id/itemsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_stories"
         android:name="com.example.lifeapp.fragments.StoriesPageFragment"
@@ -36,10 +40,24 @@
         android:id="@+id/nav_account"
         android:name="com.example.lifeapp.fragments.AccountPageFragment"
         android:label="MY ACCOUNT"
-        tools:layout="@layout/fragment_account_page" />
+        tools:layout="@layout/fragment_account_page" >
+        <action
+            android:id="@+id/action_nav_account_to_creditsFragment"
+            app:destination="@id/creditsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createWeatherFragment"
         android:name="com.example.lifeapp.fragments.CreateWeatherFragment"
         android:label="fragment_create_weather"
         tools:layout="@layout/fragment_create_weather" />
+    <fragment
+        android:id="@+id/creditsFragment"
+        android:name="com.example.lifeapp.fragments.CreditsFragment"
+        android:label="CREDITS"
+        tools:layout="@layout/fragment_credits" />
+    <fragment
+        android:id="@+id/itemsFragment"
+        android:name="com.example.lifeapp.fragments.ItemsFragment"
+        android:label="Items"
+        tools:layout="@layout/fragment_items" />
 </navigation>

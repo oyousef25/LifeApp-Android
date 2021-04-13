@@ -1,5 +1,6 @@
 package com.example.lifeapp.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,9 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.preference.PreferenceManager;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.lifeapp.R;
 import com.example.lifeapp.adapters.CustomViewpager2Adapter;
@@ -29,14 +33,13 @@ import java.util.ArrayList;
  * a RecyclerView(Exercises, recipes, and locations)
  */
 public class HomePageFragment extends Fragment {
+
     //Creating a viewpager2 variable to connect with our XML file viewpager
     ViewPager2 homePager;
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
 
-    // TODO: Rename and change types of parameters
     private Integer mParam1;
 
     public HomePageFragment() {
@@ -50,7 +53,6 @@ public class HomePageFragment extends Fragment {
      * @param param1 Parameter 1.
      * @return A new instance of fragment HomePage.
      */
-    // TODO: Rename and change types and number of parameters
     public static HomePageFragment newInstance(Integer param1) {
         HomePageFragment fragment = new HomePageFragment();
         Bundle args = new Bundle();
@@ -79,7 +81,7 @@ public class HomePageFragment extends Fragment {
         homePager.setAdapter(new CustomViewpager2Adapter(getActivity()));
 
         //setting the viewpager's animations
-
+        homePager.setPageTransformer(new DepthPageTransformer());
 
         //Locate the recyclerView
         RecyclerView recyclerView = view.findViewById(R.id.weatherList);
@@ -99,20 +101,9 @@ public class HomePageFragment extends Fragment {
         //Set the Adapter
         recyclerView.setAdapter(new HomePageAdapter(categoryItems, getContext()));
 
-
-
+        //Returning the view
         return view;
     }
-
-
-    /**
-     * @author Omar Yousef
-     * @version 1.0
-     * @date March 20th 2021
-     *
-     * ZoomOutPage transformer created by android:
-     * It's a zoom out animation class helps us with adding animations to our viewpager2
-     */
 
     /**
      * @author Omar Yousef
@@ -122,4 +113,43 @@ public class HomePageFragment extends Fragment {
      * DepthPageTransformer transformer created by android:
      * It's a Depth Page Transformer animation class helps us with adding animations to our viewpager2
      */
+    public class DepthPageTransformer implements ViewPager2.PageTransformer {
+        private static final float MIN_SCALE = 0.75f;
+
+        public void transformPage(View view, float position) {
+            int pageWidth = view.getWidth();
+
+            if (position < -1) { // [-Infinity,-1)
+                // This page is way off-screen to the left.
+                view.setAlpha(0f);
+
+            } else if (position <= 0) { // [-1,0]
+                // Use the default slide transition when moving to the left page
+                view.setAlpha(1f);
+                view.setTranslationX(0f);
+                view.setTranslationZ(0f);
+                view.setScaleX(1f);
+                view.setScaleY(1f);
+
+            } else if (position <= 1) { // (0,1]
+                // Fade the page out.
+                view.setAlpha(1 - position);
+
+                // Counteract the default slide transition
+                view.setTranslationX(pageWidth * -position);
+                // Move it behind the left page
+                view.setTranslationZ(-1f);
+
+                // Scale the page down (between MIN_SCALE and 1)
+                float scaleFactor = MIN_SCALE
+                        + (1 - MIN_SCALE) * (1 - Math.abs(position));
+                view.setScaleX(scaleFactor);
+                view.setScaleY(scaleFactor);
+
+            } else { // (1,+Infinity]
+                // This page is way off-screen to the right.
+                view.setAlpha(0f);
+            }
+        }
+    }
 }

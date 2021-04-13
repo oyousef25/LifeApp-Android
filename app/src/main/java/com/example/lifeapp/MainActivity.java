@@ -1,16 +1,58 @@
 package com.example.lifeapp;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.example.lifeapp.fragments.CreditsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+    //Creating a new shared preferences object so we can use it to retrieve the current settings
+    SharedPreferences sharedPreferences;
+
+    //Locating out container to change its background
+    ConstraintLayout constraintLayout;
+
+    //Creating a textView for our categoryTitle
+    TextView categoryTitle;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        /*
+            Shared Preferences (Settings menu)
+         */
+        //Getting the current application context
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        //Finding our container to change its background
+        constraintLayout = findViewById(R.id.container);
+        //Locating the background_color settings item
+        if (sharedPreferences.getBoolean("background_color", false)){
+            //Change the layout background color to white
+            constraintLayout.setBackgroundColor(Color.WHITE);
+        }else{
+            //Change it back to light gray
+            constraintLayout.setBackgroundColor(getResources().getColor(R.color.color_secondary_variant));
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,4 +69,23 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        //Locating the actions settings item
+        if (id == R.id.action_settings) {
+            //Sending the user to the settings activity
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            //Starting the activity
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

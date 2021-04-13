@@ -17,17 +17,15 @@
             android:id="@+id/cityName"
             android:layout_width="200dp"
             android:layout_height="64dp"
-            android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:paddingLeft="10dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="@dimen/activity_vertical_margin"
+            android:textSize="@dimen/other_text"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tempTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +39,7 @@
             android:paddingBottom="20dp"
             android:text="TextView"
             android:textAlignment="textEnd"
-            android:textSize="@dimen/activity_vertical_margin"
+            android:textSize="@dimen/other_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

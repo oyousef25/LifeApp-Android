@@ -3,7 +3,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- Font sizes needed for the app -->
+    <dimen name="big_title">35dp</dimen>
     <dimen name="title">30dp</dimen>
-    <dimen name="story_title">25dp</dimen>
-    <dimen name="recycler_text">20dp</dimen>
+    <dimen name="small_title">25dp</dimen>
+    <dimen name="medium_text">20dp</dimen>
+    <dimen name="other_text">16dp</dimen>
 </resources>
