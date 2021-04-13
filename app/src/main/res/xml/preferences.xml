@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+    Settings menu preferences
+    -->
+
+    <!--Changing temperature unit-->
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="temp_unit"
         android:title="Fahrenheit" />
+
+    <!-- Turn the description's color to black -->
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="desc_color"
         android:title="Darker story description"/>
+
+    <!-- Setting the apps background to white -->
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="background_color"

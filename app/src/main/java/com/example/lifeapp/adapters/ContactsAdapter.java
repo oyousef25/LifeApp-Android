@@ -35,10 +35,24 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Custom
     /*
         Properties
      */
+    //An Activity to pass the intents bundles
     private Activity activity;
+    //And ArrayList to hold all contact items
     private ArrayList<ContactItem> contactItems;
+    //The current state/context of the application
     private Context context;
 
+    /**
+     * @author Omar Yousef
+     * @date April 13th 2021
+     * @version 1.0
+     *
+     * ContactsAdapter() class constructor
+     * it allows us to create a new instance of the class
+     * @param activity
+     * @param contactItems
+     * @param context
+     */
     public ContactsAdapter(Activity activity, ArrayList<ContactItem> contactItems, Context context) {
         this.activity = activity;
         this.contactItems = contactItems;
@@ -127,8 +141,8 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Custom
                 //Adding extra email, cc, subject and email body
                 intent.putExtra(Intent.EXTRA_EMAIL, emailAddress);
                 intent.putExtra(Intent.EXTRA_CC, ccEmail);
-                intent.putExtra(Intent.EXTRA_SUBJECT, "I'm Looking to contact homebook':");
-                intent.putExtra(Intent.EXTRA_TEXT, "I like your professional looking app");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "I'm Looking to contact LifeApp':");
+                intent.putExtra(Intent.EXTRA_TEXT, "I like using LifeApp it made my life easier");
 
                 //Making sure our data is not empty before starting the activity
                 if(intent.resolveActivity(activity.getPackageManager()) != null){

@@ -62,6 +62,7 @@ public class HomeViewpagerFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_viewpager, container, false);
 
+        //Checking if the parameter is not null
         if (mParam1 != null){
             //Locating our pager image and storing it in a variable
             ImageView pagerImage = view.findViewById(R.id.pagerImage);

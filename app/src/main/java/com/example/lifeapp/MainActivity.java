@@ -39,12 +39,17 @@ public class MainActivity extends AppCompatActivity {
         /*
             Shared Preferences (Settings menu)
          */
+        //Getting the current application context
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
+        //Finding our container to change its background
         constraintLayout = findViewById(R.id.container);
+        //Locating the background_color settings item
         if (sharedPreferences.getBoolean("background_color", false)){
+            //Change the layout background color to white
             constraintLayout.setBackgroundColor(Color.WHITE);
         }else{
+            //Change it back to light gray
             constraintLayout.setBackgroundColor(getResources().getColor(R.color.color_secondary_variant));
         }
     }
@@ -74,8 +79,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
+        //Locating the actions settings item
         if (id == R.id.action_settings) {
+            //Sending the user to the settings activity
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            //Starting the activity
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

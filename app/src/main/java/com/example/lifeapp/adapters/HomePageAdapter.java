@@ -157,6 +157,9 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Custom
             locationsList.add(new Item(R.drawable.garden, "Spring Garden", "Spring Garden Loop is a 2.4 kilometer lightly trafficked loop trail located near Windsor, Ontario, Canada."));
             locationsList.add(new Item(R.drawable.blue_heron, "Blue Heron", "Blue Heron Loop is a 3.2 kilometer lightly trafficked loop trail located near Windsor, Ontario, Canada."));
 
+            /*
+                Returning an arrayList depending on the user's click position
+             */
             if (this.getLayoutPosition() == 0) {
                 //Make the itemArrayList equal to our recipesList
                 ItemsFragment.itemArrayList = recipesList;

@@ -59,7 +59,7 @@ public class CreateFormPageFragment extends Fragment {
                 //Getting our parcelable data
                 story = getArguments().getParcelable(STORY);
 
-                //Seeting our button's text to Update
+                //Setting our button's text to Update
                 submit.setText("Update Story!");
                 //If the parcelable object is not empty
                 if (story != null){

@@ -89,12 +89,19 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.CustomVi
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
+                                //Reading the main object in the JSON array of objects
                                 JSONObject mainObject = response.getJSONObject("main");
+                                //Getting the temp property value in the main object
                                 weatherItem.setTemp(mainObject.getDouble("temp"));
+                                //Storing the time the link was updated
                                 weatherItem.setLastUpdated(System.currentTimeMillis());
+                                //Opening a new connection with the db
                                 WeatherDB db = new WeatherDB(context);
+                                //updating the weather's data
                                 db.updateWeather(weatherItem);
+                                //Displaying a succeed message in the logcat
                                 Log.d("UPDATE", weatherItem.getCityName() + " TEMP UPDATED");
+                                //If our try statement failed we catch it with this catch statement
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

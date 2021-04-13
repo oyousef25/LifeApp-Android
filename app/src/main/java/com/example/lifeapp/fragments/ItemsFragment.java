@@ -18,9 +18,12 @@ import com.example.lifeapp.pojo.Item;
 import java.util.ArrayList;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link ItemsFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * @author Omar Yousef
+ * @date April 13th 2021
+ * @version 1.0
+ *
+ * ItemsFragment:
+ * This fragment will host the category items lists(Recipes, exercises, and locations)
  */
 public class ItemsFragment extends Fragment {
     public static ArrayList<Item> itemArrayList;

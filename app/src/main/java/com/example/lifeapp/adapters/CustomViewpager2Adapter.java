@@ -24,6 +24,7 @@ public class CustomViewpager2Adapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
+        //Adding items to the ViewPager
         switch (position){
             case 0:
                 return HomeViewpagerFragment.newInstance(R.drawable.cover_image);

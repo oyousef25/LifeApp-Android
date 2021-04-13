@@ -9,8 +9,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/itemsList"
         android:layout_width="match_parent"
-        android:layout_height="680dp"
+        android:layout_height="match_parent"
+        android:layoutAnimation="@anim/recyclerview_animation"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layoutAnimation="@anim/recyclerview_animation"/>
+        android:paddingBottom="60dp" />
 </FrameLayout>
