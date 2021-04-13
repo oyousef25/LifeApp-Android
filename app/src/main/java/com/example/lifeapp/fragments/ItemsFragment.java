@@ -1,5 +1,6 @@
 package com.example.lifeapp.fragments;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -81,7 +82,6 @@ public class ItemsFragment extends Fragment {
 
         //setting the layoutManager
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         return view;
     }
 }
